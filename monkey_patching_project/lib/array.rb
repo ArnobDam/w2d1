@@ -1,7 +1,7 @@
 # Monkey-Patch Ruby's existing Array class to add your own custom methods
 
 class Array
-    require "byebug"
+
     #PART 1
 
     def span
@@ -41,6 +41,7 @@ class Array
 
     #PART 2
 
+    
     def my_count(value)
 
         count = 0
@@ -75,18 +76,15 @@ class Array
     
     def my_transpose
 
-        new_arr = Array.new(self.length) {Array.new[]}
+        new_arr = Array.new(self.length) {Array.new([])}
 
-        debugger
         self.each_with_index do |arr, idx1|
             arr.each_with_index do |ele, idx2|
-                new_arr[idx2] << ele
+                new_arr[idx2][idx1] = ele
             end
         end
 
         new_arr
     end
 end
-
-#run sample array to run debugger (hopefully)
 
